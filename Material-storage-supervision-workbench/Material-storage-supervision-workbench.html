@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- import CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./Material-storage-supervision-workbench.css"
+    />
+  </head>
+
+  <body>
+    <div id="app">
+      <el-row :gutter="5">
+        <el-col :span="14">
+          <div style="height: 408px; width: 678px">
+            <!--  -->
+            <el-row>
+              <div
+                style="
+                  width: 678px;
+                  height: 110px;
+                  display: flex;
+                  justify-content: space-between;
+                "
+              >
+                <div class="grid-goods">
+                  <div class="goods-operate">
+                    <img src="./image/icon01.png" alt="" />
+                  </div>
+                  <div class="goods-operate-title">物资分布</div>
+                </div>
+                <div class="grid-goods">
+                  <div class="goods-operate" style="border-color: #f08c6d">
+                    <img src="./image/icon02.png" alt="" />
+                  </div>
+                  <div class="goods-operate-title">物资监管</div>
+                </div>
+                <div class="grid-goods">
+                  <div class="goods-operate" style="border-color: #6dbef8">
+                    <img src="./image/icon03.png" alt="" />
+                  </div>
+                  <div class="goods-operate-title">物资分类</div>
+                </div>
+                <div class="grid-goods">
+                  <div class="goods-operate" style="border-color: #332a7c">
+                    <img src="./image/icon04.png" alt="" />
+                  </div>
+                  <div class="goods-operate-title">物资采购</div>
+                </div>
+                <div class="grid-goods">
+                  <div class="goods-operate" style="border-color: #f25767">
+                    <img src="./image/icon05.png" alt="" />
+                  </div>
+                  <div class="goods-operate-title">社会捐赠</div>
+                </div>
+                <div class="grid-goods">
+                  <div class="goods-operate" style="border-color: #52b7f5">
+                    <img src="./image/icon06.png" alt="" />
+                  </div>
+                  <div class="goods-operate-title">应急征用</div>
+                </div>
+              </div>
+            </el-row>
+            <el-row>
+              <div
+                style="
+                  display: flex;
+                  width: 678px;
+                  height: 110px;
+                  justify-content: space-between;
+                "
+              >
+                <div class="gird-progress" style="background-color: #72c2fd">
+                  <div class="progress-title">
+                    <h3>待审批</h3>
+                    <h3>14562</h3>
+                  </div>
+                </div>
+
+                <div class="gird-progress" style="background-color: #4ecd6d">
+                  <div class="progress-title">
+                    <h3>已完成</h3>
+                    <h3>36542</h3>
+                  </div>
+                </div>
+
+                <div class="gird-progress" style="background-color: #fda225">
+                  <div class="progress-title">
+                    <h3>进行中</h3>
+                    <h3>6665</h3>
+                  </div>
+                </div>
+              </div>
+            </el-row>
+            <el-row>
+              <div class="grid" style="width: 678px; height: 160px">
+                <div class="title-nav">
+                  <h3>
+                    <i
+                      class="el-icon-s-promotion"
+                      :style="{color: '#4981D4'}"
+                    ></i>
+                    我的流程
+                  </h3>
+                </div>
+              </div>
+            </el-row>
+          </div>
+        </el-col>
+
+        <el-col :span="10">
+          <div
+            class="grid"
+            style="width: 472px; height: 408px; margin: 1px 0px 0px -30px"
+          >
+            <div class="title-nav">
+              <h3>
+                <i class="el-icon-s-promotion" :style="{color: '#4981D4'}"></i>
+                物资统计
+              </h3>
+              <hr />
+            </div>
+            <div
+              style="
+                width: 376px;
+                height: 250px;
+                margin: 35px 40px;
+                float: left;
+              "
+            >
+              <el-table
+                :show-header="false"
+                :data="goodsData"
+                :row-class-name="tableRowClassName"
+                style="width: 100%"
+                :cell-style="cellstyle"
+              >
+                <el-table-column
+                  prop="goodsNum"
+                  label="物资序号"
+                  min-width="10%"
+                >
+                </el-table-column>
+                <el-table-column
+                  prop="goodsName"
+                  label="物资名称"
+                  min-width="30%"
+                >
+                </el-table-column>
+                <el-table-column prop="quantity" label="进度" min-width="40%">
+                  <template slot-scope="scope">
+                    <el-progress
+                      type="line"
+                      :stroke-width="7"
+                      :percentage="filterData(scope.row.quantity)"
+                      :color="customColor"
+                      :show-text="false"
+                    >
+                    </el-progress>
+                  </template>
+                </el-table-column>
+
+                <el-table-column
+                  prop="quantity"
+                  label="物资数量"
+                  min-width="20%"
+                >
+                </el-table-column>
+              </el-table>
+            </div>
+          </div>
+        </el-col>
+      </el-row>
+
+      <el-row>
+        <el-col :span="24">
+          <div class="grid" style="width: 1180px; height: 220px">
+            <!--  -->
+            <div class="title-nav">
+              <h3>
+                <i class="el-icon-s-promotion" :style="{color: '#4981D4'}"></i>
+                物资预警
+              </h3>
+            </div>
+          </div>
+        </el-col>
+      </el-row>
+
+      <el-row>
+        <el-col :span="24">
+          <div class="grid" style="width: 1180px; height: 220px">
+            <!--  -->
+            <div class="title-nav">
+              <h3>
+                <i class="el-icon-s-promotion" :style="{color: '#4981D4'}"></i>
+                物资作业
+              </h3>
+            </div>
+          </div>
+        </el-col>
+      </el-row>
+    </div>
+  </body>
+  <!-- import Vue before Element -->
+  <script src="../js/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script src="./Material-storage-supervision-workbench.js"></script>
+</html>

@@ -1,0 +1,51 @@
+.el-dialog__title {
+    width: 61px;
+    height: 31px;
+    color: rgba(16, 16, 16, 100);
+    font-size: 20px;
+    text-align: left;
+    font-family: SourceHanSansSC-bold;
+    font-weight: bolder;
+  }
+
+  /* .title-icon {
+    margin: 0px 7px 0px 0px;
+  } */
+
+  .title-style {
+    color: rgba(16, 16, 16, 100);
+    font-size: 16px;
+    text-align: left;
+    font-family: SourceHanSansSC-regular;
+    font-weight: bolder;
+  }
+  .title-demand {
+    width: 50%;
+    display: block;
+    /* justify-content: space-between; */
+
+    font-size: 14px;
+    text-align: center;
+    color: rgba(16, 16, 16, 100);
+    font-family: SourceHanSansSC-regular;
+    font-weight: bolder;
+  }
+
+  .inner {
+    width: 1153px;
+    margin: 0px auto 0px auto;
+  }
+
+  .el-row {
+    margin: 0px auto 20px auto;
+  }
+
+  .el-row .row-line {
+    background-color: #fafafa;
+  }
+
+  .title-demand-line {
+    height: 32px;
+    line-height: 32px;
+    background-color: #fafafa;
+  }

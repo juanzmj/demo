@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- import CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+  </head>
+
+  <body>
+    <div id="app" class="demand-table">
+      <div class="table-main">
+        <el-row>
+          <img class="title-icon" src="../images/矩形 4 Copy@1x.png" alt="" />
+          <span class="title-style">需求完结</span>
+        </el-row>
+        <el-row :gutter="20">
+          <el-col :span="12">
+            <div>
+              <el-input
+                placeholder="采购单号/物资名称/采购人"
+                prefix-icon="el-icon-search"
+                v-model="inputSearch"
+                style="width: 400px"
+              >
+              </el-input>
+            </div>
+          </el-col>
+          <el-col :span="12">
+            <el-button type="primary" style="float: right">发起采购</el-button>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-table
+            ref="multipleTable"
+            :data="tableData"
+            tooltip-effect="dark"
+            style="width: 100%"
+            :cell-style="{'text-align':'center',color:'black'}"
+            :header-cell-style="{'text-align':'center','font-weight':'bolder',color:'black'}"
+          >
+            <el-table-column type="selection" width="55"> </el-table-column>
+            <el-table-column prop="purchaseNum" label="采购编号" width="110px">
+            </el-table-column>
+            <el-table-column prop="purchaseName" label="采购名称" width="110px">
+            </el-table-column>
+            <el-table-column
+              prop="purchaseAmount"
+              label="采购金额"
+              width="80px"
+            >
+            </el-table-column>
+            <el-table-column prop="date" label="日期" width="110px">
+            </el-table-column>
+            <el-table-column prop="applicant" label="申请人" width="70px">
+            </el-table-column>
+            <el-table-column prop="status" label="状态" width="110px">
+              <template slot-scope="scope">
+                <span v-if="scope.row.status=='待审批'" style="color: #e88d00"
+                  >待审批</span
+                >
+                <span v-if="scope.row.status=='审批通过'" style="color: #3ab903"
+                  >审批通过</span
+                >
+                <span v-if="scope.row.status=='审批驳回'" style="color: #b90303"
+                  >审批驳回</span
+                >
+              </template>
+            </el-table-column>
+            <el-table-column
+              prop="address"
+              label="仓储地址"
+              show-overflow-tooltip
+            >
+            </el-table-column>
+            <el-table-column label="操作" width="200px">
+              <template slot-scope="scope">
+                <el-button
+                  v-if="scope.row.status=='审批通过' || scope.row.status=='待审批'"
+                  v-show="true"
+                  type="text"
+                  size="small"
+                  >详情</el-button
+                >
+                <el-button
+                  v-if="scope.row.status=='审批通过'"
+                  v-show="true"
+                  type="text"
+                  size="small"
+                  >采购需求</el-button
+                >
+
+                <el-button
+                  v-if="scope.row.status=='审批通过'"
+                  v-show="true"
+                  type="text"
+                  size="small"
+                  >需求完结</el-button
+                >
+                <el-button
+                  v-if="scope.row.status=='审批驳回'"
+                  v-show="true"
+                  type="text"
+                  size="small"
+                  >修改</el-button
+                >
+              </template>
+            </el-table-column>
+          </el-table>
+        </el-row>
+      </div>
+    </div>
+  </body>
+  <!-- import Vue before Element -->
+  <script src="../../js/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script src="./demand-finish-pageone.js"></script>
+  <link rel="stylesheet" href="./demand-finish-pageone.css" />
+  <script></script>
+  <style></style>
+</html>
